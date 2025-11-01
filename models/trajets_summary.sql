@@ -1,12 +1,12 @@
 SELECT
-  sc.nom_segment,
-  tv.nom_type_vehicule,
+  sc.segment_client,
+  tv.type_vehicule,
   COUNT(t.id_trajet) AS nombre_trajets,
   SUM(t.montant_total) AS total_revenus
-FROM `centralisation_donnees_vtc.trajets` t
-JOIN `centralisation_donnees_vtc.clients` c ON t.id_client = c.id_client
-JOIN `centralisation_donnees_vtc.segments_clients` sc ON c.id_segment = sc.id_segment
-JOIN `centralisation_donnees_vtc.vehicules` v ON t.id_vehicule = v.id_vehicule
-JOIN `centralisation_donnees_vtc.types_vehicule` tv ON v.id_type_vehicule = tv.id_type_vehicule
-GROUP BY sc.nom_segment, tv.nom_type_vehicule
-ORDER BY total_revenus DESC;
+FROM `Dataset.trajets` t
+JOIN `Dataset.clients` c ON t.id_client = c.id_client
+JOIN `Dataset.segments_clients` sc ON c.id_segment = sc.id_segment
+JOIN `Dataset.vehicules` v ON t.id_vehicule = v.id_vehicule
+JOIN `Dataset.Type_vehicules` tv ON v.id_type = tv.id_type
+GROUP BY sc.segment_client, tv.type_vehicule
+ORDER BY total_revenus DESC
