@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: tech_store_data 
+    database: vtc-paris-etoile
+    schema: TechStore         
+    tables:
+      - name: Produits___TechStore
